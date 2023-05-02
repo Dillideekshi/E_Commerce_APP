@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "19388407661",
+    "project_id": "ezy-cart-sample",
+    "storage_bucket": "ezy-cart-sample.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:19388407661:android:18417cab644ed6ed914464",
+        "android_client_info": {
+          "package_name": "com.example.finalapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "19388407661-q4kmnildr4bt8km6auml28cmv7damqsd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACmzeIrm9zh71iVBruIM2OberJK9ftMzk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "19388407661-q4kmnildr4bt8km6auml28cmv7damqsd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

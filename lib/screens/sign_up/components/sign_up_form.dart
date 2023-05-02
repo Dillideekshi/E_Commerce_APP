@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:shop_app/components/custom_surfix_icon.dart';
 import 'package:shop_app/components/default_button.dart';
 import 'package:shop_app/components/form_error.dart';
 import 'package:shop_app/screens/complete_profile/complete_profile_screen.dart';
+import 'package:shop_app/screens/sign_up/components/signup_controller.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
@@ -19,6 +22,8 @@ class _SignUpFormState extends State<SignUpForm> {
   String? password;
   String? conform_password;
   bool remember = false;
+  final controller = Get.put(SignUpController());
+  final _formkey = GlobalKey<FormState>();
   final List<String?> errors = [];
 
   void addError({String? error}) {
@@ -37,6 +42,7 @@ class _SignUpFormState extends State<SignUpForm> {
 
   @override
   Widget build(BuildContext context) {
+
     return Form(
       key: _formKey,
       child: Column(
@@ -51,10 +57,8 @@ class _SignUpFormState extends State<SignUpForm> {
           DefaultButton(
             text: "Continue",
             press: () {
-              if (_formKey.currentState!.validate()) {
-                _formKey.currentState!.save();
-                // if all are valid then go to success screen
-                Navigator.pushNamed(context, CompleteProfileScreen.routeName);
+              if(_formKey.currentState!.validate() ){
+                SignUpController.instance.registerUser(controller.email.text.trim(), controller.password.text.trim());
               }
             },
           ),
@@ -65,6 +69,7 @@ class _SignUpFormState extends State<SignUpForm> {
 
   TextFormField buildConformPassFormField() {
     return TextFormField(
+      controller: controller.conform_password,
       obscureText: true,
       onSaved: (newValue) => conform_password = newValue,
       onChanged: (value) {
@@ -98,6 +103,7 @@ class _SignUpFormState extends State<SignUpForm> {
 
   TextFormField buildPasswordFormField() {
     return TextFormField(
+      controller: controller.password,
       obscureText: true,
       onSaved: (newValue) => password = newValue,
       onChanged: (value) {
@@ -131,6 +137,7 @@ class _SignUpFormState extends State<SignUpForm> {
 
   TextFormField buildEmailFormField() {
     return TextFormField(
+      controller: controller.email,
       keyboardType: TextInputType.emailAddress,
       onSaved: (newValue) => email = newValue,
       onChanged: (value) {
